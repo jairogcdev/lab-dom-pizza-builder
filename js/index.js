@@ -115,6 +115,35 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let price = document.querySelector('.panel.price strong');
+  let priceList = document.querySelector('.panel.price ul');
+  const priceListItems = priceList.querySelectorAll('li');
+  priceListItems.forEach((item) => {
+    if (state.mushrooms && item.textContent === '$1 mushrooms') {
+      item.style.visibility = 'visible';
+    } else if (state.pepperoni && item.textContent === '$1 pepperoni') {
+      item.style.visibility = 'visible';
+    } else if (state.greenPeppers && item.textContent === '$1 green peppers') {
+      item.style.visibility = 'visible';
+    } else if (state.whiteSauce && item.textContent === '$3 white sauce') {
+      item.style.visibility = 'visible';
+    } else if (
+      state.glutenFreeCrust &&
+      item.textContent === '$5 gluten-free crust'
+    ) {
+      item.style.visibility = 'visible';
+    } else {
+      item.style.visibility = 'hidden';
+    }
+  });
+  price.innerHTML = `$${
+    basePrice +
+    (state.pepperoni ? ingredients.pepperoni.price : 0) +
+    (state.mushrooms ? ingredients.mushrooms.price : 0) +
+    (state.greenPeppers ? ingredients.greenPeppers.price : 0) +
+    (state.whiteSauce ? ingredients.whiteSauce.price : 0) +
+    (state.glutenFreeCrust ? ingredients.glutenFreeCrust.price : 0)
+  }`;
 }
 
 renderEverything();
