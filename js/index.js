@@ -29,7 +29,6 @@ function renderEverything() {
   renderGlutenFreeCrust();
 
   renderButtons();
-  console.log(state);
   renderPrice();
 }
 
@@ -120,20 +119,20 @@ function renderPrice() {
   const priceListItems = priceList.querySelectorAll('li');
   priceListItems.forEach((item) => {
     if (state.mushrooms && item.textContent === '$1 mushrooms') {
-      item.style.visibility = 'visible';
+      item.style.display = 'block';
     } else if (state.pepperoni && item.textContent === '$1 pepperoni') {
-      item.style.visibility = 'visible';
+      item.style.display = 'block';
     } else if (state.greenPeppers && item.textContent === '$1 green peppers') {
-      item.style.visibility = 'visible';
+      item.style.display = 'block';
     } else if (state.whiteSauce && item.textContent === '$3 white sauce') {
-      item.style.visibility = 'visible';
+      item.style.display = 'block';
     } else if (
       state.glutenFreeCrust &&
       item.textContent === '$5 gluten-free crust'
     ) {
-      item.style.visibility = 'visible';
+      item.style.display = 'block';
     } else {
-      item.style.visibility = 'hidden';
+      item.style.display = 'none';
     }
   });
   price.innerHTML = `$${
